@@ -1,0 +1,32 @@
+{% extends 'base/base.html' %}
+{% block content %}
+
+<div class="container mt-5">
+
+    <a href="{% url 'see_blog' %}" class="btn btn-warning">View your blogs</a>
+
+    <form method="POST" class="mt-5 pt-5 mb-5 pb-5" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-12">
+                <label>Enter blog title</label>
+                <input type="text" class="form-control" placeholder="Enter title" name="title">
+            </div>
+
+            <div class="col-md-12 mb-4">
+                {{form.media}}
+                {{form.as_p}}
+            </div>
+            
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-info mt-4">Create blog</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+
+{% endblock %}

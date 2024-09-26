@@ -1,0 +1,23 @@
+{% extends "base/base.html" %}
+{% block content %}
+
+
+<section>
+    <div class="container mt-5">
+        <div class="row text-center">
+            <div class="col-xl-10 mx-auto">
+                <img src="/{{ blog.image }}" class="img-fluid mb-5">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-8 col-lg-10 mx-auto">
+                <div class="text-content">
+                    {{ blog.content | safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

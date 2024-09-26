@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  
-<!-- Mirrored from demo.bootstrapious.com/directory/1-6-1/blog.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 17 Apr 2021 09:21:30 GMT -->
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,17 +36,20 @@
           <div class="collapse navbar-collapse" id="navbarCollapse">
             
             <ul class="navbar-nav ml-auto">
-              
+               
               {% if request.user.is_authenticated %}
-              <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block">
+              <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block"></li>
+                <a class="btn btn-info" href="{% url 'add_blog' %}">Create</a>
+              </li>
+              <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block"></li>
                 <a class="btn btn-danger" href="{% url 'login' %}">Log Out</a>
               </li>
-              {% else %} 
+              {% else %}
               <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block">
                 <a class="btn btn-primary" href="{% url 'login' %}">Log In</a>
               </li>
               {% endif %}
-
+              
             </ul>
           </div>
         </div>
@@ -72,7 +74,6 @@
       </div>
     </div>
   </footer>
-     
+  
 </body>
 </html>
-
