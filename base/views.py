@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .form import *
+from django.contrib.auth import logout
 
 # Create your views here.
 def home(request):
@@ -7,8 +8,11 @@ def home(request):
     return render(request, 'base/home.html', context)
 
 def login(request):
-    print(request.user.is_authenticated)
     return render(request, 'base/login.html')
+
+def logout_view(request):
+    logout(request)
+    return redirect('/')
 
 def register(request):
     return render(request, 'base/register.html')
@@ -63,12 +67,32 @@ def add_blog(request):
 def blog_update(request, slug):
     context = {}
     try:
+        
         blog_obj = BlogModel.objects.get(slug= slug)
-
+        
         if blog_obj.user != request.user:
             return redirect('/')
         
-        context['blog_obj'] = 'blog_obj'
+        initial_dict = {'content': blog_obj.content, 'image': blog_obj.image}
+        form = BlogForm(initial = initial_dict)
+
+        if request.method == "POST":
+            form = BlogForm(request.POST)
+            image = request.FILES['image']   
+            title = request.POST.get('title')
+            user = request.user 
+            content = request.POST.get('content')
+
+            if form.is_valid():
+                content = form.cleaned_data['content']
+
+            BlogModel.objects.create(
+                user = user, title = title,
+                content = content, image = image
+            )
+        
+        context['blog_obj'] = blog_obj
+        context['form'] = form
         
     except Exception as e:
         print(e)

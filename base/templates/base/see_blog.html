@@ -20,10 +20,10 @@
                 <td>{{blog.title}}</td>
                 <td>{{blog.created_at}}</td>
                 <td>
-                    <a href="#" class="btn btn-success">Update</a>
+                    <a href= "{% url 'blog_update' blog.slug %}" class="btn btn-success">Update</a>
                 </td>
                 <td>
-                    <a href="{% url 'blog_delete' blog.id %}" class="btn btn-danger">Delete</a>
+                    <a href= "{% url 'blog_delete' blog.id %}" class="btn btn-danger">Delete</a>
                 </td>
               </tr>
               {% endfor %}

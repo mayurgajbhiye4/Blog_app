@@ -17,11 +17,17 @@
                   <label class="form-label" for="loginPassword"> Password</label>
                 </div>
               </div>
-              <input class="form-control" name="loginPassword" id="loginPassword" placeholder="Password" type="password" required data-msg="Please enter your password">
+              <input class="form-control" type="password" name="loginPassword" id="loginPassword" placeholder="Password" type="password" required data-msg="Please enter your password">
             </div>
-            
-            <!-- Submit-->
-            <button class="btn btn-lg btn-block btn-primary" onclick="register()">Sign Up</button>
+
+            <!-- Submit-->  
+            <button class="btn btn-lg btn-block btn-primary" onclick="signUp()">Sign Up</button>
+            <p class="text-center"> 
+              <small class="text-muted text-center">
+                  Already have an account?
+                  <a href="{% url 'login' %}">Log In</a>
+              </small>
+          </p>
            
           </div>
           
@@ -33,4 +39,7 @@
       </div>
     </div>
   </div>
+  <script src ="/static/js/main.js"></script>
+
+
 {% endblock %}
